@@ -1,0 +1,67 @@
+//#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include<ctime>
+#include<string>
+#include<fstream>
+//#include "stdafx.h"
+
+using namespace std;
+
+struct Data
+{
+	int x = 5;
+	double y = 3.5;
+};
+
+
+
+int main()
+{
+
+
+// binary
+// 
+//ofstream binFile("data.bin", ios::out | ios::in  | ios::binary);
+//ofstream binFile("data.bin", ios::in | ios::out  | ios::binary);
+//ofstream binFile("data.bin", ios::binary  );
+//ofstream binFile("data.bin", fstream::in | fstream::out | fstream::binary);
+//ofstream binFile("data.bin",  fstream::binary);
+	//ofstream binFile("data.bin", ios:: app | ios::out | ios::in | ios::binary);
+	ofstream binFile("data.bin", ios_base:: in | ios_base::binary | ios_base::out | ios_base::app);
+
+Data m[5];
+
+m[0].x = 10;
+m[0].y = 10.1;
+
+m[1].x = 11;
+m[1].y = 11.1;
+
+m[2].x = 12;
+m[2].y = 12.1;
+
+m[3].x = 13;
+m[3].y = 13.1;
+
+m[4].x = 14;
+m[4].y = 14.1;
+
+
+if (!binFile)
+{
+	cout << "error open file\n";
+}
+else
+{
+	cout << "file has been written successfully \n";
+binFile.write((char*)m, sizeof(Data) * 5);
+//binFile.write((char*)m, sizeof(Data) * 5);
+}
+binFile.close();
+
+
+	
+
+	
+	return 0;
+}
